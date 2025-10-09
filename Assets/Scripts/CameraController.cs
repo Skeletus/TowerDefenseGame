@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField] private bool canControl;
     [SerializeField] private Vector3 levelCenterPoint;
     [SerializeField] private float maxDistanceFromCenter; 
 
@@ -47,6 +48,11 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canControl)
+        {
+            return;
+        }
+
         HandleRotation();
         HandleZoom();
         HandleMovement();
@@ -54,6 +60,16 @@ public class CameraController : MonoBehaviour
         HandleMouseMovement();
 
         focusPoint.position = transform.position + (transform.forward * GetFocusPointDistance());
+    }
+
+    public void EnableCameraControls(bool enable)
+    {
+        canControl = enable;
+    }
+
+    public void AdjustPitchValue(float value)
+    {
+        pitch = value;
     }
 
     private void HandleMovement()
