@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField] private Vector3 levelCenterPoint;
+    [SerializeField] private float maxDistanceFromCenter; 
+
     [Header("Movement details")]
     [SerializeField] private float movementSpeed = 120;
     [SerializeField] private float mouseMovementSpeed = 5;
@@ -60,6 +63,11 @@ public class CameraController : MonoBehaviour
         float verticalInput = Input.GetAxisRaw("Vertical");
         float horizontalInput = Input.GetAxisRaw("Horizontal");
 
+        if (verticalInput == 0 && horizontalInput == 0)
+        {
+            return;
+        }
+
         Vector3 flatForward = Vector3.ProjectOnPlane(transform.forward, Vector3.up).normalized;
 
         if (verticalInput > 0)
@@ -78,6 +86,11 @@ public class CameraController : MonoBehaviour
         if (horizontalInput < 0)
         {
             targetPosition -= transform.right * movementSpeed * Time.deltaTime;
+        }
+
+        if (Vector3.Distance(levelCenterPoint, targetPosition) > maxDistanceFromCenter)
+        {
+            targetPosition = levelCenterPoint + (targetPosition - levelCenterPoint).normalized * maxDistanceFromCenter;
         }
 
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref movementVelocity, smoothTime);
@@ -144,6 +157,11 @@ public class CameraController : MonoBehaviour
 
             Vector3 movement = moveForward + moveRight;
             Vector3 targetPosition = transform.position + movement;
+
+            if(Vector3.Distance(levelCenterPoint, targetPosition) > maxDistanceFromCenter)
+            {
+                targetPosition = levelCenterPoint + (targetPosition - levelCenterPoint).normalized * maxDistanceFromCenter;
+            }
 
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref mouseMovementVelocity, smoothTime);
             lastMousePosition = Input.mousePosition;
