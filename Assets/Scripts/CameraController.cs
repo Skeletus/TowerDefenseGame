@@ -7,6 +7,12 @@ public class CameraController : MonoBehaviour
     [Header("Movement details")]
     [SerializeField] private float movementSpeed = 120;
     [SerializeField] private float mouseMovementSpeed = 5;
+
+    [Header("Edge movement Details")]
+    [SerializeField] private float edgeMovementSpeed = 10;
+    [SerializeField] private float edgeTreshold = 10;
+    private float screenWidth;
+    private float screenHeight;
      
     [Header("Rotation and Details")]
     [SerializeField] private Transform focusPoint;
@@ -27,6 +33,13 @@ public class CameraController : MonoBehaviour
     private Vector3 zoomVelocity = Vector3.zero;
     private Vector3 mouseMovementVelocity = Vector3.zero;
     private Vector3 lastMousePosition = Vector3.zero;
+    private Vector3 edgeMovementVelocity = Vector3.zero;
+
+    private void Start()
+    {
+        screenWidth = Screen.width;
+        screenHeight = Screen.height;
+    }
 
     // Update is called once per frame
     void Update()
@@ -34,6 +47,7 @@ public class CameraController : MonoBehaviour
         HandleRotation();
         HandleZoom();
         HandleMovement();
+        //HandleEdgeMovement();
         HandleMouseMovement();
 
         focusPoint.position = transform.position + (transform.forward * GetFocusPointDistance());
@@ -134,5 +148,32 @@ public class CameraController : MonoBehaviour
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref mouseMovementVelocity, smoothTime);
             lastMousePosition = Input.mousePosition;
         }
+    }
+
+    private void HandleEdgeMovement()
+    {
+        Vector3 targetPosition = transform.position;
+        Vector3 mousePosition = Input.mousePosition;
+        Vector3 flatForward = Vector3.ProjectOnPlane(transform.forward, Vector3.up);
+
+        if (mousePosition.x > screenWidth - edgeTreshold)
+        {
+            targetPosition += transform.right * edgeMovementSpeed * Time.deltaTime;
+        }
+        if (mousePosition.x < edgeTreshold)
+        {
+            targetPosition -= transform.right * edgeMovementSpeed * Time.deltaTime;
+        }
+        if (mousePosition.y > screenHeight - edgeTreshold)
+        {
+            targetPosition += flatForward * edgeMovementSpeed * Time.deltaTime;
+        }
+        if (mousePosition.y < edgeTreshold)
+        {
+            targetPosition -= flatForward * edgeMovementSpeed * Time.deltaTime;
+        }
+
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref edgeMovementVelocity, smoothTime);
+
     }
 }
