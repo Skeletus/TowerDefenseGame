@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [Header("Movement details")]
     [SerializeField] private float movementSpeed = 120;
-
+    [SerializeField] private float mouseMovementSpeed = 5;
+     
     [Header("Rotation and Details")]
     [SerializeField] private Transform focusPoint;
     [SerializeField] private float maxFocusPointDistance = 15;
@@ -23,6 +25,8 @@ public class CameraController : MonoBehaviour
     private float smoothTime = .1f;
     private Vector3 movementVelocity = Vector3.zero;
     private Vector3 zoomVelocity = Vector3.zero;
+    private Vector3 mouseMovementVelocity = Vector3.zero;
+    private Vector3 lastMousePosition = Vector3.zero;
 
     // Update is called once per frame
     void Update()
@@ -30,6 +34,7 @@ public class CameraController : MonoBehaviour
         HandleRotation();
         HandleZoom();
         HandleMovement();
+        HandleMouseMovement();
 
         focusPoint.position = transform.position + (transform.forward * GetFocusPointDistance());
     }
@@ -106,5 +111,28 @@ public class CameraController : MonoBehaviour
         }
 
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref zoomVelocity, smoothTime);
+    }
+
+    private void HandleMouseMovement()
+    {
+        if (Input.GetMouseButtonDown(2))
+        {
+            lastMousePosition = Input.mousePosition;
+        }
+        if (Input.GetMouseButton(2))
+        {
+            Vector3 positionDifference = Input.mousePosition - lastMousePosition;
+            Vector3 moveRight = transform.right * (-positionDifference.x) * mouseMovementSpeed * Time.deltaTime;
+            Vector3 moveForward = transform.forward * (-positionDifference.y) * mouseMovementSpeed * Time.deltaTime;
+
+            moveRight.y = 0;
+            moveForward.y = 0;
+
+            Vector3 movement = moveForward + moveRight;
+            Vector3 targetPosition = transform.position + movement;
+
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref mouseMovementVelocity, smoothTime);
+            lastMousePosition = Input.mousePosition;
+        }
     }
 }
