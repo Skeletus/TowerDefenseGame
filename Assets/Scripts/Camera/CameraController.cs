@@ -77,6 +77,11 @@ public class CameraController : MonoBehaviour
         movementSpeed = value;
     }
 
+    public void AdjustMouseSensitivity(float value)
+    {
+        mouseMovementSpeed = value;
+    }
+
     private void HandleMovement()
     {
         Vector3 targetPosition = transform.position;

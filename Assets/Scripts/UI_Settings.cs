@@ -8,11 +8,18 @@ public class UI_Settings : MonoBehaviour
     private CameraController cameraController;
 
     [Header("Keyboard Sensitivity")]
-    [SerializeField] private Slider keyboardSensitivity;
+    [SerializeField] private Slider keyboardSenseSlider;
     [SerializeField] private string keyboardSenseParameter = "keyboardSense";
 
     [SerializeField] private float minKeyboardSens = 60;
     [SerializeField] protected float maxKeyboardSens = 240;
+
+    [Header("Mouse Sensetivity")]
+    [SerializeField] private Slider mouseSenseSlider;
+    [SerializeField] private string mouseSenseParameter = "mouseSense";
+
+    [SerializeField] private float minMouseSense = 1;
+    [SerializeField] private float maxMouseSense = 10;
 
     private void Awake()
     {
@@ -26,13 +33,22 @@ public class UI_Settings : MonoBehaviour
         cameraController.AdjustKeyboardSensitivity(mouseSensetivity);
     }
 
+    public void MouseSensetivity(float value)
+    {
+        float mouseSensetivity = Mathf.Lerp(minMouseSense, maxMouseSense, value);
+
+        cameraController.AdjustMouseSensitivity(mouseSensetivity);
+    }
+
     private void OnDisable()
     {
-        PlayerPrefs.SetFloat(keyboardSenseParameter, keyboardSensitivity.value);
+        PlayerPrefs.SetFloat(keyboardSenseParameter, keyboardSenseSlider.value);
+        PlayerPrefs.SetFloat(mouseSenseParameter, mouseSenseSlider.value);
     }
 
     private void OnEnable()
     {
-        keyboardSensitivity.value = PlayerPrefs.GetFloat(keyboardSenseParameter, .5f);
+        keyboardSenseSlider.value = PlayerPrefs.GetFloat(keyboardSenseParameter, .5f);
+        mouseSenseSlider.value = PlayerPrefs.GetFloat(mouseSenseParameter, .6f);
     }
 }
