@@ -72,6 +72,11 @@ public class CameraController : MonoBehaviour
         pitch = value;
     }
 
+    public void AdjustKeyboardSensitivity(float value)
+    {
+        movementSpeed = value;
+    }
+
     private void HandleMovement()
     {
         Vector3 targetPosition = transform.position;
