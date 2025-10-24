@@ -94,7 +94,7 @@ public class CameraController : MonoBehaviour
             return;
         }
 
-        Vector3 flatForward = Vector3.ProjectOnPlane(transform.forward, Vector3.up).normalized;
+        Vector3 flatForward = Vector3.ProjectOnPlane(transform.forward, Vector3.up);
 
         if (verticalInput > 0)
         {
