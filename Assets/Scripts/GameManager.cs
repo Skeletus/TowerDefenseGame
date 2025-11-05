@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private int currency;
     [SerializeField] private int maxHP;
     [SerializeField] private int currentHP;
 
@@ -24,5 +25,11 @@ public class GameManager : MonoBehaviour
     {
         currentHP += value;
         inGameUI.UpdateHealthPointsUI(currentHP, maxHP);
+    }
+
+    public void UpdateCurrency(int value)
+    {
+        currency += value;
+        inGameUI.UpdateCurrencyUI(currency);
     }
 }

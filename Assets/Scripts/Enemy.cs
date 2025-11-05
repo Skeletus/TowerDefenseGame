@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private EnemyPortal myPortal;
     private NavMeshAgent agent;
+    private GameManager gameManager;
 
     private int nextWaypointIndex = 0;
     private float totalDistance;
@@ -32,6 +33,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void Awake()
     {
+        gameManager = FindFirstObjectByType<GameManager>();
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.avoidancePriority = Mathf.RoundToInt(agent.speed * 10);
@@ -154,6 +156,13 @@ public class Enemy : MonoBehaviour, IDamageable
     }
 
     private void Die()
+    {
+        myPortal.RemoveActiveEnemy(gameObject);
+        gameManager.UpdateCurrency(1);
+        Destroy(gameObject);
+    }
+
+    public void DestroyEnemy()
     {
         myPortal.RemoveActiveEnemy(gameObject);
         Destroy(gameObject);

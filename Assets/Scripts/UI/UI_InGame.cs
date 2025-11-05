@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class UI_InGame : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI currencyPointsText;
     [SerializeField] private TextMeshProUGUI healthPointsText;
 
     public void UpdateHealthPointsUI(int value, int maxValue)
@@ -12,5 +13,11 @@ public class UI_InGame : MonoBehaviour
         int newValue = maxValue - value;
 
         healthPointsText.text = "Threat: " + newValue + "/" + maxValue;
+    }
+
+    public void UpdateCurrencyUI(int value)
+    {
+
+        currencyPointsText.text = "Resources: " + value;
     }
 }
