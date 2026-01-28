@@ -7,6 +7,7 @@ public class UI_InGame : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI currencyPointsText;
     [SerializeField] private TextMeshProUGUI healthPointsText;
+    [SerializeField] private TextMeshProUGUI waveTimerText;
 
     public void UpdateHealthPointsUI(int value, int maxValue)
     {
@@ -19,5 +20,15 @@ public class UI_InGame : MonoBehaviour
     {
 
         currencyPointsText.text = "Resources: " + value;
+    }
+
+    public void UpdateWaveTimerUI(float value) => waveTimerText.text = "seconds : " + value.ToString("00");
+
+    public void EnableWaveTimer(bool enable) => waveTimerText.transform.parent.gameObject.SetActive(enable);
+
+    public void ForceWaveButton()
+    {
+        WaveManager waveManager = FindFirstObjectByType<WaveManager>();
+        waveManager.ForceNextWave();
     }
 }

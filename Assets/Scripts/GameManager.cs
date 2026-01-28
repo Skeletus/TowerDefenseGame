@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        inGameUI = FindFirstObjectByType<UI_InGame>();
+        inGameUI = FindFirstObjectByType<UI_InGame>(FindObjectsInactive.Include);
     }
 
     private void Start()
