@@ -9,8 +9,10 @@ public class UI_InGame : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI currencyPointsText;
     [SerializeField] private TextMeshProUGUI healthPointsText;
+    [Space]
     [SerializeField] private TextMeshProUGUI waveTimerText;
     [SerializeField] private float waveTimerOffset;
+    [SerializeField] UI_TextBlinkEffect waveTimerTextBlinkEffect;
 
     private void Awake()
     {
@@ -39,6 +41,7 @@ public class UI_InGame : MonoBehaviour
         Vector3 offset = new Vector3(0, yOffset);
 
         uiAnimator.ChangePosition(waveTimerTransform, offset);
+        waveTimerTextBlinkEffect.EnableBlink(enable);
     }
 
     public void ForceWaveButton()
