@@ -24,8 +24,8 @@ public class UI : MonoBehaviour
         //ActivateFadeEffect(true);
 
         SwitchTo(ui_settings.gameObject);
-        SwitchTo(ui_mainMenu.gameObject);
-        //SwitchTo(ui_inGame.gameObject);
+        //SwitchTo(ui_mainMenu.gameObject);
+        SwitchTo(ui_inGame.gameObject);
     }
 
     public void SwitchTo(GameObject uiToEnable)
