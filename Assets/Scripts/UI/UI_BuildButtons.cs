@@ -6,12 +6,15 @@ public class UI_BuildButtons : MonoBehaviour
 {
     [SerializeField] private float yPositionOffset;
 
-    private bool isActive;
+    private bool isBuildMenuActive;
     private UI_Animator uiAnim;
+
+    private UI_BuildButtonOnHoverEffect[] buildButtons;
 
     private void Awake()
     {
         uiAnim = GetComponentInParent<UI_Animator>();
+        buildButtons = GetComponentsInChildren<UI_BuildButtonOnHoverEffect>();
     }
 
     private void Update()
@@ -22,11 +25,20 @@ public class UI_BuildButtons : MonoBehaviour
 
     public void ShowBuildButtons()
     {
-        isActive = !isActive;
+        isBuildMenuActive = !isBuildMenuActive;
 
-        float yOffset = isActive ? yPositionOffset : -yPositionOffset;
+        float yOffset = isBuildMenuActive ? yPositionOffset : -yPositionOffset;
         Vector3 offset = new Vector3(0, yOffset);
 
         uiAnim.ChangePosition(transform, offset);
+        ToggleButtonMovement();
+    }
+
+    private void ToggleButtonMovement()
+    {
+        foreach (var button in buildButtons)
+        {
+            button.ToggleMovement(isBuildMenuActive);
+        }
     }
 }
