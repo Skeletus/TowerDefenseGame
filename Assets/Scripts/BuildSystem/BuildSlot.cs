@@ -27,6 +27,12 @@ public class BuildSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             return;
         }
 
+        if(buildManager.GetSelectedSlot() == this)
+        {
+            return;
+        }
+
+        buildManager.EnableBuildMenu();
         buildManager.SelectBuildSlot(this);
         MoveTileUp();
 

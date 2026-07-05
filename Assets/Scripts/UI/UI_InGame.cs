@@ -25,7 +25,7 @@ public class UI_InGame : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.F10))
         {
             ui.SwitchTo(pausedUI.gameObject);
         }

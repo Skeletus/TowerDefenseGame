@@ -17,15 +17,9 @@ public class UI_BuildButtons : MonoBehaviour
         buildButtons = GetComponentsInChildren<UI_BuildButtonOnHoverEffect>();
     }
 
-    private void Update()
+    public void ShowBuildButtons(bool showButton)
     {
-        if (Input.GetKeyDown(KeyCode.B))
-            ShowBuildButtons();
-    }
-
-    public void ShowBuildButtons()
-    {
-        isBuildMenuActive = !isBuildMenuActive;
+        isBuildMenuActive = showButton;
 
         float yOffset = isBuildMenuActive ? yPositionOffset : -yPositionOffset;
         Vector3 offset = new Vector3(0, yOffset);
