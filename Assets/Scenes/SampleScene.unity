@@ -184707,6 +184707,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedBuildSlot: {fileID: 0}
+  waveManager: {fileID: 358462255}
+  currentGrid: {fileID: 1625314504}
 --- !u!4 &1920200949
 Transform:
   m_ObjectHideFlags: 0
@@ -204038,13 +204040,14 @@ SceneRoots:
   m_Roots:
   - {fileID: 2127628875}
   - {fileID: 1005363257}
+  - {fileID: 358462254}
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1625314500}
   - {fileID: 338672967}
   - {fileID: 857250809}
-  - {fileID: 358462254}
+  - {fileID: 1920200949}
   - {fileID: 1113496903}
   - {fileID: 384393308}
   - {fileID: 1432996506}
@@ -204052,4 +204055,3 @@ SceneRoots:
   - {fileID: 577166112}
   - {fileID: 106103959}
   - {fileID: 1835312784}
-  - {fileID: 1920200949}
