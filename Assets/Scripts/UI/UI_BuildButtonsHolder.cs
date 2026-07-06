@@ -13,6 +13,9 @@ public class UI_BuildButtonsHolder : MonoBehaviour
     private UI_BuildButtonOnHoverEffect[] buildButtonsEffects;
     private UI_BuildButton[] buildButtons;
 
+    private List<UI_BuildButton> unlockedButtons;
+    private UI_BuildButton lastSelectedButton;
+
     private void Awake()
     {
         uiAnim = GetComponentInParent<UI_Animator>();
@@ -21,6 +24,22 @@ public class UI_BuildButtonsHolder : MonoBehaviour
     }
 
     public UI_BuildButton[] GetBuildButtons() => buildButtons;
+    public List<UI_BuildButton> GetUnlockedButtons() => unlockedButtons;
+    public void SetLastSelected(UI_BuildButton newLastSelected) => lastSelectedButton = newLastSelected;
+    public UI_BuildButton GetLastSelectedButton() => lastSelectedButton;
+
+    public void UpdateUnlockedButtons()
+    {
+        unlockedButtons = new List<UI_BuildButton>();
+
+        foreach(var button in buildButtons)
+        {
+            if (button.buttonUnlocked)
+            {
+                unlockedButtons.Add(button);
+            }
+        }
+    }
 
     public void ShowBuildButtons(bool showButton)
     {

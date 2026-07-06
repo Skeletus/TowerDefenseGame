@@ -49,5 +49,7 @@ public class LevelManager : MonoBehaviour
                 buildButton.UnlockTowerIfNeeded(unlockData.towerName, unlockData.unlocked);
             }
         }
+
+        ui.buildButtonsUI.UpdateUnlockedButtons();
     }
 }

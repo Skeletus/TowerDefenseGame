@@ -35,8 +35,8 @@ public class TowerAttackRadiusDisplay : MonoBehaviour
 
         for (int i=0; i < segments; i++)
         {
-            float x = Mathf.Sin(Mathf.Deg2Rad * angle) * circleRadius;
-            float z = Mathf.Cos(Mathf.Deg2Rad * angle) * circleRadius;
+            float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
+            float z = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
 
             lineRenderer.SetPosition(i, new Vector3(x + center.x, center.y, z + center.z));
             angle += 360f / segments;

@@ -4979,6 +4979,7 @@ MonoBehaviour:
   adjustmnetSpeed: 10
   showcaseY: 160
   defaultY: 123
+  selectedY: 135
 --- !u!1 &55911269
 GameObject:
   m_ObjectHideFlags: 0
@@ -12077,6 +12078,7 @@ MonoBehaviour:
   adjustmnetSpeed: 10
   showcaseY: 160
   defaultY: 123
+  selectedY: 135
 --- !u!1 &152194523
 GameObject:
   m_ObjectHideFlags: 0
@@ -49100,7 +49102,7 @@ PrefabInstance:
     - target: {fileID: 5568205430515201702, guid: 95613bea3f32aab418b32ec3a1560ee5,
         type: 3}
       propertyPath: m_text
-      value: Spider nest
+      value: Spider Nest
       objectReference: {fileID: 0}
     - target: {fileID: 5568205430515201702, guid: 95613bea3f32aab418b32ec3a1560ee5,
         type: 3}
@@ -49255,6 +49257,7 @@ MonoBehaviour:
   adjustmnetSpeed: 10
   showcaseY: 160
   defaultY: 123
+  selectedY: 135
 --- !u!1 &543565100
 GameObject:
   m_ObjectHideFlags: 0
@@ -78830,6 +78833,7 @@ MonoBehaviour:
   adjustmnetSpeed: 10
   showcaseY: 160
   defaultY: 123
+  selectedY: 135
 --- !u!1 &840198610
 GameObject:
   m_ObjectHideFlags: 0
@@ -101903,6 +101907,7 @@ MonoBehaviour:
   adjustmnetSpeed: 10
   showcaseY: 160
   defaultY: 123
+  selectedY: 135
 --- !u!1 &1050752736
 GameObject:
   m_ObjectHideFlags: 0
@@ -145183,6 +145188,7 @@ MonoBehaviour:
   adjustmnetSpeed: 10
   showcaseY: 160
   defaultY: 123
+  selectedY: 135
 --- !u!1 &1514127561
 GameObject:
   m_ObjectHideFlags: 0
@@ -202084,7 +202090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a14d57030669445bdd06c846e733af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currency: 1
+  currency: 200
   maxHP: 100
   currentHP: 0
 --- !u!4 &2127628875
@@ -204088,6 +204094,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BuildButton_UI - Crossbow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372855306276407334, guid: 95613bea3f32aab418b32ec3a1560ee5,
+        type: 3}
+      propertyPath: selectedY
+      value: 135
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class BuildSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
+    private UI ui;
     private TileAnimator tileAnim;
     private BuildManager buildManager;
     private Vector3 defaultPosition;
@@ -17,6 +18,7 @@ public class BuildSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private void Awake()
     {
+        ui = FindFirstObjectByType<UI>();
         tileAnim = FindFirstObjectByType<TileAnimator>();
         buildManager = FindFirstObjectByType<BuildManager>();
         defaultPosition = transform.position;
@@ -54,6 +56,8 @@ public class BuildSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         MoveTileUp();
 
         tileCanBeMoved = false;
+
+        ui.buildButtonsUI.GetLastSelectedButton()?.SelectButton(true);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

@@ -8,6 +8,7 @@ public class TowerPreview : MonoBehaviour
     private MeshRenderer[] meshRenderers;
     private TowerAttackRadiusDisplay attackRadiusDisplay;
     private Tower myTower;
+
     private float attackRange;
 
     private void Awake()
@@ -21,7 +22,7 @@ public class TowerPreview : MonoBehaviour
         DestroyExtraComponents();
     }
 
-    private void ShowPreview(bool showPreview, Vector3 previewPosition)
+    public void ShowPreview(bool showPreview, Vector3 previewPosition)
     {
         transform.position = previewPosition;
         attackRadiusDisplay.CreateCircle(showPreview, attackRange);
