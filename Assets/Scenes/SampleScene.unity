@@ -184838,6 +184838,10 @@ MonoBehaviour:
   selectedBuildSlot: {fileID: 0}
   waveManager: {fileID: 358462255}
   currentGrid: {fileID: 1625314504}
+  attackRadiusMaterial: {fileID: 2100000, guid: 018340eaec231294fa07cb1bc1ca30cd,
+    type: 2}
+  buildPreviewMaterial: {fileID: 2100000, guid: 3ab8c3c6d5090cb4aa0b2748fcc98e1c,
+    type: 2}
 --- !u!4 &1920200949
 Transform:
   m_ObjectHideFlags: 0
