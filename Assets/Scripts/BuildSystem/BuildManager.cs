@@ -100,12 +100,12 @@ public class BuildManager : MonoBehaviour
             return;
         }
 
-        ui.buildButtons.ShowBuildButtons(true);
+        ui.buildButtonsUI.ShowBuildButtons(true);
     }
 
     private void DisableBuildMenu()
     {
-        ui.buildButtons.ShowBuildButtons(false);
+        ui.buildButtonsUI.ShowBuildButtons(false);
     }
     
     public BuildSlot GetSelectedSlot() => selectedBuildSlot;

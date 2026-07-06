@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UI_BuildButton : MonoBehaviour
@@ -8,9 +9,16 @@ public class UI_BuildButton : MonoBehaviour
     private CameraEffects cameraEffects;
     private GameManager gameManager;
 
-    [SerializeField] private int price = 50;
+    [SerializeField] private string towerName;
+    [SerializeField] private int towerPrice = 50;
+
     [SerializeField] private GameObject towerToBuild;
     [SerializeField] private float towerCenterY = .5f;
+
+    [Header("Text UI Component")]
+    [SerializeField] private TextMeshProUGUI towerNameText;
+    [SerializeField] private TextMeshProUGUI towerPriceText;
+
 
     private void Awake()
     {
@@ -19,9 +27,19 @@ public class UI_BuildButton : MonoBehaviour
         gameManager = FindFirstObjectByType<GameManager>();
     }
 
+    public void UnlockTowerIfNeeded(string towerNameToCheck, bool unlockStatus)
+    {
+        if (towerNameToCheck != towerName)
+        {
+            return;
+        }
+
+        gameObject.SetActive(unlockStatus);
+    }
+
     public void BuildTower()
     {
-        if(gameManager.HasEnoughCurrency(price) == false)
+        if(gameManager.HasEnoughCurrency(towerPrice) == false)
         {
             return;
         }
@@ -41,5 +59,12 @@ public class UI_BuildButton : MonoBehaviour
         cameraEffects.ScreenShake(.15f, .02f); 
 
         GameObject newTower = Instantiate(towerToBuild, slotToUse.GetBuildPosition(towerCenterY), Quaternion.identity);
+    }
+
+    private void OnValidate()
+    {
+        towerNameText.text = towerName;
+        towerPriceText.text = towerPrice + "";
+        gameObject.name = "BuildButton_UI - " + towerName;
     }
 }
