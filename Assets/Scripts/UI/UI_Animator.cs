@@ -5,6 +5,49 @@ using UnityEngine.UI;
 
 public class UI_Animator : MonoBehaviour
 {
+    [Header("UI-Feedback - Shake Effects")]
+    [SerializeField] private float shakeMagnitude;
+    [SerializeField] private float shakeDuration;
+    [Space]
+    [SerializeField] private float defaultUIScale = 1.5f;
+    [SerializeField] private bool scaleChangeAvailable;
+
+    public void Shake(Transform transformToShake)
+    {
+        RectTransform rectTransform = transformToShake.GetComponent<RectTransform>();
+        StartCoroutine(ShakeCoroutine(rectTransform));
+    }
+
+    private IEnumerator ShakeCoroutine(RectTransform rectTransform)
+    {
+        float time = 0;
+        Vector3 originalPosition = rectTransform.anchoredPosition;
+        float currentScale = rectTransform.localScale.x;
+
+        if (scaleChangeAvailable )
+        {
+            StartCoroutine(ChangeScaleCo(rectTransform, currentScale * 1.1f, shakeDuration/ 2));
+        }
+
+        while(time < shakeDuration)
+        {
+            float xOffset = Random.Range(-shakeMagnitude, shakeMagnitude);
+            float yOffset = Random.Range(-shakeMagnitude, shakeMagnitude);
+
+            rectTransform.anchoredPosition = originalPosition + new Vector3 (xOffset, yOffset);
+
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        rectTransform.anchoredPosition = originalPosition;
+
+        if (scaleChangeAvailable)
+        {
+            StartCoroutine(ChangeScaleCo(rectTransform, defaultUIScale, shakeDuration / 2));
+        }
+    }
+
     public void ChangePosition(Transform transform, Vector3 offset, float duration = .1f)
     {
         RectTransform rectTransform = transform.GetComponent<RectTransform>();

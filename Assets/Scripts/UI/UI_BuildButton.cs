@@ -8,6 +8,7 @@ public class UI_BuildButton : MonoBehaviour
     private BuildManager buildManager;
     private CameraEffects cameraEffects;
     private GameManager gameManager;
+    private UI ui;
 
     [SerializeField] private string towerName;
     [SerializeField] private int towerPrice = 50;
@@ -22,6 +23,7 @@ public class UI_BuildButton : MonoBehaviour
 
     private void Awake()
     {
+        ui = GetComponentInParent<UI>();
         buildManager = FindFirstObjectByType<BuildManager>();
         cameraEffects = FindFirstObjectByType<CameraEffects>();
         gameManager = FindFirstObjectByType<GameManager>();
@@ -41,6 +43,7 @@ public class UI_BuildButton : MonoBehaviour
     {
         if(gameManager.HasEnoughCurrency(towerPrice) == false)
         {
+            ui.ui_inGame.ShakeCurrencyUI();
             return;
         }
 

@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     {
         currentHP += value;
         inGameUI.UpdateHealthPointsUI(currentHP, maxHP);
+        inGameUI.ShakeHealthUI();
     }
 
     public void UpdateCurrency(int value)

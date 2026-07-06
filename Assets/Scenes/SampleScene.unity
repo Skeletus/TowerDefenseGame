@@ -8875,6 +8875,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e42b4482e62c74397c597c7dcca919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shakeMagnitude: 10
+  shakeDuration: 0.5
+  defaultUIScale: 1
+  scaleChangeAvailable: 1
 --- !u!1 &107620524
 GameObject:
   m_ObjectHideFlags: 0
@@ -202076,7 +202080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a14d57030669445bdd06c846e733af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currency: 500
+  currency: 1
   maxHP: 100
   currentHP: 0
 --- !u!4 &2127628875

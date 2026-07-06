@@ -31,6 +31,16 @@ public class UI_InGame : MonoBehaviour
         }
     }
 
+    public void ShakeCurrencyUI()
+    {
+        ui.uiAnim.Shake(currencyPointsText.transform.parent);
+    }
+
+    public void ShakeHealthUI()
+    {
+        ui.uiAnim.Shake(healthPointsText.transform.parent);
+    }
+
     public void UpdateHealthPointsUI(int value, int maxValue)
     {
         int newValue = maxValue - value;
