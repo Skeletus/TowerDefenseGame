@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UI_BuildButton : MonoBehaviour, IPointerEnterHandler
+public class UI_BuildButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private BuildManager buildManager;
     private CameraEffects cameraEffects;
@@ -119,11 +119,21 @@ public class UI_BuildButton : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        buildManager.MouseOverUI(true);
+
         foreach(var button in buildButonsHolder.GetBuildButtons())
         {
-            button.SelectButton(false);
+            if(button.gameObject.activeSelf)
+            {
+                button.SelectButton(false);
+            }
         }
 
         SelectButton(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        buildManager.MouseOverUI(false);
     }
 }

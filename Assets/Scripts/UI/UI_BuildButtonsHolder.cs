@@ -30,6 +30,11 @@ public class UI_BuildButtonsHolder : MonoBehaviour
 
     private void CheckBuildButtonsHotkey()
     {
+        if(isBuildMenuActive == false)
+        {
+            return;
+        }
+
         for (int i = 0; i < unlockedButtons.Count; i++)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1 + i))
