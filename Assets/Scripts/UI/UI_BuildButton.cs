@@ -92,11 +92,18 @@ public class UI_BuildButton : MonoBehaviour, IPointerEnterHandler
             return;
         }
 
+        if (ui.buildButtonsUI.GetLastSelectedButton() == null)
+        {
+            return;
+        }
+
         BuildSlot slotToUse = buildManager.GetSelectedSlot();
         buildManager.CancelBuildAction();
 
         slotToUse.SnapToDefaultPositionInmidiatly();
         slotToUse.SetSlotAvaliableTo(false);
+
+        ui.buildButtonsUI.SetLastSelected(null);
 
         cameraEffects.ScreenShake(.15f, .02f); 
 

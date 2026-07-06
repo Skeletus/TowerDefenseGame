@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UI_BuildButtonOnHoverEffect : MonoBehaviour, IPointerExitHandler
+public class UI_BuildButtonOnHoverEffect : MonoBehaviour
 {
     [SerializeField] private float adjustmnetSpeed = 10f;
 
@@ -60,11 +60,6 @@ public class UI_BuildButtonOnHoverEffect : MonoBehaviour, IPointerExitHandler
         {
             SetTargetY(defaultY);
         }
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        SetTargetY(selectedY);
     }
 
 }

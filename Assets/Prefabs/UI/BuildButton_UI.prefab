@@ -729,6 +729,7 @@ MonoBehaviour:
   adjustmnetSpeed: 10
   showcaseY: 160
   defaultY: 123
+  selectedY: 0
 --- !u!1 &7313352254033032485
 GameObject:
   m_ObjectHideFlags: 0

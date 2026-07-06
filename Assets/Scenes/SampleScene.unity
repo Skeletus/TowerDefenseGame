@@ -4796,6 +4796,12 @@ PrefabInstance:
       propertyPath: towerName
       value: Cannon
       objectReference: {fileID: 0}
+    - target: {fileID: 1733058801298640095, guid: 95613bea3f32aab418b32ec3a1560ee5,
+        type: 3}
+      propertyPath: towerToBuild
+      value: 
+      objectReference: {fileID: 3196591413557304513, guid: bbd0599df75527a469ba3cfbd7588c37,
+        type: 3}
     - target: {fileID: 4082531436535012302, guid: 95613bea3f32aab418b32ec3a1560ee5,
         type: 3}
       propertyPath: m_text
@@ -101744,6 +101750,12 @@ PrefabInstance:
       propertyPath: towerName
       value: Rapid Fire gun
       objectReference: {fileID: 0}
+    - target: {fileID: 1733058801298640095, guid: 95613bea3f32aab418b32ec3a1560ee5,
+        type: 3}
+      propertyPath: towerToBuild
+      value: 
+      objectReference: {fileID: 3196591413557304513, guid: 06ffe4053f93b84459da818efb7460da,
+        type: 3}
     - target: {fileID: 4082531436535012302, guid: 95613bea3f32aab418b32ec3a1560ee5,
         type: 3}
       propertyPath: m_text
@@ -145023,6 +145035,12 @@ PrefabInstance:
       propertyPath: towerName
       value: Hammer
       objectReference: {fileID: 0}
+    - target: {fileID: 1733058801298640095, guid: 95613bea3f32aab418b32ec3a1560ee5,
+        type: 3}
+      propertyPath: towerToBuild
+      value: 
+      objectReference: {fileID: 3196591413557304513, guid: 6cf4f48b61ea39c49ba69c0de471f47e,
+        type: 3}
     - target: {fileID: 4082531436535012302, guid: 95613bea3f32aab418b32ec3a1560ee5,
         type: 3}
       propertyPath: m_text
@@ -170302,7 +170320,7 @@ MonoBehaviour:
     unlocked: 1
   - towerName: Cannon
     unlocked: 1
-  - towerName: Rapid fire gun
+  - towerName: Rapid Fire gun
     unlocked: 1
   - towerName: Hammer
     unlocked: 0
