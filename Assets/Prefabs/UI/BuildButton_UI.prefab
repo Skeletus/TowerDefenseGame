@@ -228,7 +228,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 2233934985751686292}
   - component: {fileID: 5049130910764275243}
   - component: {fileID: 4888382491858714200}
+  - component: {fileID: 1733058801298640095}
   m_Layer: 5
   m_Name: BuildButton_UI
   m_TagString: Untagged
@@ -545,6 +546,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1733058801298640095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6625618493351755410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879197d8bd4e0434f96fefcdd4f57567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerToBuild: {fileID: 0}
+  towerCenterY: 0.5
 --- !u!1 &7313352254033032485
 GameObject:
   m_ObjectHideFlags: 0

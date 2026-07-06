@@ -12,6 +12,7 @@ public class BuildSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private bool tileCanBeMoved = true;
 
     private Coroutine currentMovementUpCoroutine;
+    private Coroutine moveToDefaultCoroutine;
 
     private void Awake()
     {
@@ -57,11 +58,11 @@ public class BuildSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         if(currentMovementUpCoroutine != null)
         {
-            Invoke(nameof(MoveDefaultPosition), tileAnim.GetTravelDuration());
+            Invoke(nameof(MoveToDefaultPosition), tileAnim.GetTravelDuration());
         }
         else
         {
-            MoveDefaultPosition();
+            MoveToDefaultPosition();
         }
     }
 
@@ -69,17 +70,29 @@ public class BuildSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         Vector3 targetPosition = defaultPosition + new Vector3(0, tileAnim.GetBuildOffset(), 0);
 
-        currentMovementUpCoroutine = StartCoroutine(tileAnim.MoveTileCo(transform, targetPosition));
+        currentMovementUpCoroutine = StartCoroutine(tileAnim.MoveTileCoroutine(transform, targetPosition));
     }
 
-    private void MoveDefaultPosition()
+    private void MoveToDefaultPosition()
     {
-        tileAnim.MoveTile(transform, defaultPosition);
+        moveToDefaultCoroutine = StartCoroutine(tileAnim.MoveTileCoroutine(transform, defaultPosition));
+    }
+
+    public void SnapToDefaultPositionInmidiatly()
+    {
+        if (moveToDefaultCoroutine != null)
+        {
+            StopCoroutine(moveToDefaultCoroutine);
+        }
+
+        transform.position = defaultPosition;
     }
 
     public void UnselectTile()
     {
-        MoveDefaultPosition();
+        MoveToDefaultPosition();
         tileCanBeMoved = true;
     }
+
+    public Vector3 GetBuildPosition(float yOffset) => defaultPosition + new Vector3(0, yOffset);
 }

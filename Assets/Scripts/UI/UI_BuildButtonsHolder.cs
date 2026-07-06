@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_BuildButtons : MonoBehaviour
+public class UI_BuildButtonsHolder : MonoBehaviour
 {
     [SerializeField] private float yPositionOffset;
+    [SerializeField] private float openAnimationDuration = .1f;
 
     private bool isBuildMenuActive;
     private UI_Animator uiAnim;
@@ -22,10 +23,11 @@ public class UI_BuildButtons : MonoBehaviour
         isBuildMenuActive = showButton;
 
         float yOffset = isBuildMenuActive ? yPositionOffset : -yPositionOffset;
-        Vector3 offset = new Vector3(0, yOffset);
+        float methodDelay = isBuildMenuActive ? openAnimationDuration : 0;
 
-        uiAnim.ChangePosition(transform, offset);
-        ToggleButtonMovement();
+        uiAnim.ChangePosition(transform, new Vector3(0, yOffset), openAnimationDuration);
+
+        Invoke(nameof(ToggleButtonMovement), methodDelay);
     }
 
     private void ToggleButtonMovement()

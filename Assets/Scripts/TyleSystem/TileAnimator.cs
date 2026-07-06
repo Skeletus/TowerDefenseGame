@@ -11,10 +11,10 @@ public class TileAnimator : MonoBehaviour
 
     public void MoveTile(Transform objectToMove, Vector3 targetPosition)
     {
-        StartCoroutine(MoveTileCo(objectToMove, targetPosition));
+        StartCoroutine(MoveTileCoroutine(objectToMove, targetPosition));
     }
 
-    public IEnumerator MoveTileCo(Transform objectToMove, Vector3 targetPosition)
+    public IEnumerator MoveTileCoroutine(Transform objectToMove, Vector3 targetPosition)
     {
         float time = 0f;
         Vector3 startPosition = objectToMove.position;
